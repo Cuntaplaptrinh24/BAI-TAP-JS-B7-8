@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
@@ -8,118 +8,127 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="bg-slate-50">
-    <main class="max-w-6xl mx-auto p-6 md:p-10">
-        <h1 class="text-3xl font-bold text-center mb-2">Bài tập mảng</h1>
-        <p class="text-center text-gray-600 mb-6">Làm theo form code mẫu: HTML đơn giản, Tailwind CDN, JS thuần tách file riêng</p>
+<body class="min-h-screen bg-slate-100">
+    <main class="max-w-5xl mx-auto px-4 py-10">
+        <section class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
 
-        <section class="bg-gray-100 rounded-lg shadow-lg p-6 mb-6">
-            <form id="formThemSo" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-start">
                 <div>
-                    <label class="block font-medium mb-1">Nhập số</label>
-                    <input id="soNhap" type="number" step="any" class="w-full border rounded-sm px-3 py-2"
-                        placeholder="Mời nhập số" required>
-                    <p id="errorSoNhap" class="hidden text-red-400"></p>
+                    <input id="soN" type="number" step="any" class="w-full border rounded-xl px-4 py-3"
+                        placeholder="Nhập số n">
+                    <p id="errorSoN" class="hidden text-red-500 mt-1"></p>
                 </div>
-
-                <button id="btnThemSo" type="submit" class="bg-green-400 rounded-md px-3 py-2">
+                <button id="btnThemSo" class="bg-blue-500 text-white rounded-xl px-6 py-3 font-medium hover:bg-blue-600">
                     Thêm số
                 </button>
-            </form>
-
-            <div class="mt-4">
-                <p class="font-semibold">Mảng hiện tại:</p>
-                <p id="hienThiMang" class="mt-1 text-gray-700 break-words">[]</p>
-            </div>
-        </section>
-
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div class="bg-gray-100 rounded-lg shadow-lg p-6 space-y-3">
-                <h2 class="text-xl font-bold">1️⃣ Tổng số dương</h2>
-                <button id="btnTinhTongSoDuong" class="bg-blue-500 text-white rounded-md px-3 py-2">Tính tổng</button>
-                <p id="resultTongSoDuong" class="font-medium"></p>
             </div>
 
-            <div class="bg-gray-100 rounded-lg shadow-lg p-6 space-y-3">
-                <h2 class="text-xl font-bold">2️⃣ Đếm số dương</h2>
-                <button id="btnDemSoDuong" class="bg-blue-500 text-white rounded-md px-3 py-2">Đếm số</button>
-                <p id="resultDemSoDuong" class="font-medium"></p>
+            <div class="bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-4 mt-5">
+                <p class="font-medium mb-2">👉 Mảng hiện tại</p>
+                <p id="mangHienTai" class="break-words text-slate-700">Chưa có số nào trong mảng</p>
             </div>
 
-            <div class="bg-gray-100 rounded-lg shadow-lg p-6 space-y-3">
-                <h2 class="text-xl font-bold">3️⃣ Tìm số nhỏ nhất</h2>
-                <button id="btnTimSoNhoNhat" class="bg-blue-500 text-white rounded-md px-3 py-2">Tìm số nhỏ nhất</button>
-                <p id="resultSoNhoNhat" class="font-medium"></p>
-            </div>
-
-            <div class="bg-gray-100 rounded-lg shadow-lg p-6 space-y-3">
-                <h2 class="text-xl font-bold">4️⃣ Tìm số dương nhỏ nhất</h2>
-                <button id="btnTimSoDuongNhoNhat" class="bg-blue-500 text-white rounded-md px-3 py-2">Tìm số dương nhỏ nhất</button>
-                <p id="resultSoDuongNhoNhat" class="font-medium"></p>
-            </div>
-
-            <div class="bg-gray-100 rounded-lg shadow-lg p-6 space-y-3">
-                <h2 class="text-xl font-bold">5️⃣ Tìm số chẵn cuối cùng</h2>
-                <button id="btnTimSoChanCuoi" class="bg-blue-500 text-white rounded-md px-3 py-2">Tìm số chẵn</button>
-                <p id="resultSoChanCuoi" class="font-medium"></p>
-            </div>
-
-            <div class="bg-gray-100 rounded-lg shadow-lg p-6 space-y-4">
-                <h2 class="text-xl font-bold">6️⃣ Đổi chỗ</h2>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block font-medium mb-1">Vị trí 1</label>
-                        <input id="viTri1" type="number" min="0" class="w-full border rounded-sm px-3 py-2"
-                            placeholder="Nhập vị trí 1">
+            <div class="space-y-3 mt-6">
+                <details class="bg-white border rounded-xl" open>
+                    <summary class="cursor-pointer px-4 py-4 font-medium">1️⃣ Tổng số dương</summary>
+                    <div class="px-4 pb-4">
+                        <button id="btnTongSoDuong" class="bg-blue-500 text-white rounded-xl px-4 py-2">Tính tổng</button>
+                        <p id="ketQuaTongSoDuong" class="mt-3 text-slate-700"></p>
                     </div>
+                </details>
 
-                    <div>
-                        <label class="block font-medium mb-1">Vị trí 2</label>
-                        <input id="viTri2" type="number" min="0" class="w-full border rounded-sm px-3 py-2"
-                            placeholder="Nhập vị trí 2">
+                <details class="bg-white border rounded-xl">
+                    <summary class="cursor-pointer px-4 py-4 font-medium">2️⃣ Đếm số dương</summary>
+                    <div class="px-4 pb-4">
+                        <button id="btnDemSoDuong" class="bg-blue-500 text-white rounded-xl px-4 py-2">Đếm số</button>
+                        <p id="ketQuaDemSoDuong" class="mt-3 text-slate-700"></p>
                     </div>
-                </div>
+                </details>
 
-                <p id="errorDoiCho" class="hidden text-red-400"></p>
-                <button id="btnDoiCho" class="bg-blue-500 text-white rounded-md px-3 py-2">Đổi chỗ</button>
-                <p id="resultDoiCho" class="font-medium"></p>
-            </div>
+                <details class="bg-white border rounded-xl">
+                    <summary class="cursor-pointer px-4 py-4 font-medium">3️⃣ Tìm số nhỏ nhất</summary>
+                    <div class="px-4 pb-4">
+                        <button id="btnTimSoNhoNhat" class="bg-blue-500 text-white rounded-xl px-4 py-2">Tìm số nhỏ nhất</button>
+                        <p id="ketQuaTimSoNhoNhat" class="mt-3 text-slate-700"></p>
+                    </div>
+                </details>
 
-            <div class="bg-gray-100 rounded-lg shadow-lg p-6 space-y-3">
-                <h2 class="text-xl font-bold">7️⃣ Sắp xếp tăng dần</h2>
-                <button id="btnSapXepTang" class="bg-blue-500 text-white rounded-md px-3 py-2">Sắp xếp</button>
-                <p id="resultSapXepTang" class="font-medium"></p>
-            </div>
+                <details class="bg-white border rounded-xl">
+                    <summary class="cursor-pointer px-4 py-4 font-medium">4️⃣ Tìm số dương nhỏ nhất</summary>
+                    <div class="px-4 pb-4">
+                        <button id="btnTimSoDuongNhoNhat" class="bg-blue-500 text-white rounded-xl px-4 py-2">Tìm số dương nhỏ nhất</button>
+                        <p id="ketQuaTimSoDuongNhoNhat" class="mt-3 text-slate-700"></p>
+                    </div>
+                </details>
 
-            <div class="bg-gray-100 rounded-lg shadow-lg p-6 space-y-3">
-                <h2 class="text-xl font-bold">8️⃣ Tìm số nguyên tố đầu tiên</h2>
-                <button id="btnTimSoNguyenToDau" class="bg-blue-500 text-white rounded-md px-3 py-2">Tìm số nguyên tố</button>
-                <p id="resultSoNguyenToDau" class="font-medium"></p>
-            </div>
+                <details class="bg-white border rounded-xl">
+                    <summary class="cursor-pointer px-4 py-4 font-medium">5️⃣ Tìm số chẵn cuối cùng</summary>
+                    <div class="px-4 pb-4">
+                        <button id="btnTimSoChanCuoiCung" class="bg-blue-500 text-white rounded-xl px-4 py-2">Tìm số chẵn</button>
+                        <p id="ketQuaTimSoChanCuoiCung" class="mt-3 text-slate-700"></p>
+                    </div>
+                </details>
 
-            <div class="bg-gray-100 rounded-lg shadow-lg p-6 space-y-4">
-                <h2 class="text-xl font-bold">9️⃣ Đếm số nguyên</h2>
-                <div>
-                    <label class="block font-medium mb-1">Nhập số thực thêm vào mảng</label>
-                    <input id="soThucThem" type="number" step="any" class="w-full border rounded-sm px-3 py-2"
-                        placeholder="Nhập số thực hoặc số nguyên">
-                    <p id="errorSoThucThem" class="hidden text-red-400"></p>
-                </div>
-                <button id="btnThemSoThuc" class="bg-green-400 rounded-md px-3 py-2">Thêm số</button>
-                <button id="btnDemSoNguyen" class="bg-blue-500 text-white rounded-md px-3 py-2 ml-2">Đếm số nguyên</button>
-                <p id="resultDemSoNguyen" class="font-medium"></p>
-            </div>
+                <details class="bg-white border rounded-xl">
+                    <summary class="cursor-pointer px-4 py-4 font-medium">6️⃣ Đổi chỗ</summary>
+                    <div class="px-4 pb-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label for="viTri1" class="block mb-2 text-sm font-medium text-slate-700">Vị trí 1</label>
+                                <input id="viTri1" type="number" class="w-full border rounded-xl px-4 py-3"
+                                    placeholder="Nhập vị trí 1">
+                                <p id="errorViTri1" class="hidden text-red-500 mt-1 text-sm"></p>
+                            </div>
 
-            <div class="bg-gray-100 rounded-lg shadow-lg p-6 space-y-3 md:col-span-2">
-                <h2 class="text-xl font-bold">🔟 So sánh số lượng số âm và số dương</h2>
-                <button id="btnSoSanhAmDuong" class="bg-blue-500 text-white rounded-md px-3 py-2">So sánh</button>
-                <p id="resultSoSanhAmDuong" class="font-medium"></p>
+                            <div>
+                                <label for="viTri2" class="block mb-2 text-sm font-medium text-slate-700">Vị trí 2</label>
+                                <input id="viTri2" type="number" class="w-full border rounded-xl px-4 py-3"
+                                    placeholder="Nhập vị trí 2">
+                                <p id="errorViTri2" class="hidden text-red-500 mt-1 text-sm"></p>
+                            </div>
+                        </div>
+
+                        <button id="btnDoiCho" class="bg-blue-500 text-white rounded-xl px-4 py-2">Đổi chỗ</button>
+                        <p id="ketQuaDoiCho" class="mt-3 text-slate-700"></p>
+                    </div>
+                </details>
+
+                <details class="bg-white border rounded-xl">
+                    <summary class="cursor-pointer px-4 py-4 font-medium">7️⃣ Sắp xếp tăng dần</summary>
+                    <div class="px-4 pb-4">
+                        <button id="btnSapXepTangDan" class="bg-blue-500 text-white rounded-xl px-4 py-2">Sắp xếp</button>
+                        <p id="ketQuaSapXepTangDan" class="mt-3 text-slate-700"></p>
+                    </div>
+                </details>
+
+                <details class="bg-white border rounded-xl">
+                    <summary class="cursor-pointer px-4 py-4 font-medium">8️⃣ Tìm số nguyên tố đầu tiên</summary>
+                    <div class="px-4 pb-4">
+                        <button id="btnTimSoNguyenToDauTien" class="bg-blue-500 text-white rounded-xl px-4 py-2">Tìm số nguyên tố</button>
+                        <p id="ketQuaTimSoNguyenToDauTien" class="mt-3 text-slate-700"></p>
+                    </div>
+                </details>
+
+                <details class="bg-white border rounded-xl">
+                    <summary class="cursor-pointer px-4 py-4 font-medium">9️⃣ Đếm số nguyên</summary>
+                    <div class="px-4 pb-4">
+                        <button id="btnDemSoNguyen" class="bg-blue-500 text-white rounded-xl px-4 py-2">Đếm số nguyên</button>
+                        <p id="ketQuaDemSoNguyen" class="mt-3 text-slate-700"></p>
+                    </div>
+                </details>
+
+                <details class="bg-white border rounded-xl">
+                    <summary class="cursor-pointer px-4 py-4 font-medium">🔟 So sánh số lượng số âm và dương</summary>
+                    <div class="px-4 pb-4">
+                        <button id="btnSoSanhAmDuong" class="bg-blue-500 text-white rounded-xl px-4 py-2">So sánh</button>
+                        <p id="ketQuaSoSanhAmDuong" class="mt-3 text-slate-700"></p>
+                    </div>
+                </details>
             </div>
         </section>
     </main>
 
-    <script src="js/main.js"></script>
+    <script src="js/baiMang.js"></script>
 </body>
 
 </html>
